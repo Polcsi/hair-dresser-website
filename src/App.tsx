@@ -8,7 +8,6 @@ import './style/App.css'
 import ManHairModel from './component/ManHairModel'
 import Hair from './component/Hair'
 import Lights from './component/Lights'
-import { PointLight } from 'three'
 
 function App() {
 
@@ -18,10 +17,10 @@ function App() {
         <Canvas
           /* camera={{ position: [2, 0, 12.25], fov: 15 }} */
           style={{
-            backgroundColor: '#111a21'
+            backgroundColor: 'black'
           }}
         >
-          <Lights<PointLight>
+          {/* <Lights
             helperColor='cyan'
             helperSize={2}
             color={{r: 255, g: 255, b: 255}}
@@ -43,11 +42,9 @@ function App() {
             distance={0.0}
             decay={2}
             castShadow={true}
-          />
-          <ambientLight intensity={1.25} />
-          {/* <ambientLight intensity={0.1} />
-          <directionalLight intensity={0.4} /> */}
-          {/* <ambientLight/> */}
+          /> */}
+         {/*  <ambientLight intensity={1.25} /> */}
+          <directionalLight intensity={0.4} />
 
           <axesHelper args={[10]}/>
           <gridHelper args={[40]}/>
