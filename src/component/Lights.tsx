@@ -1,9 +1,9 @@
 import { useHelper } from "@react-three/drei";
 import { useRef, useEffect } from "react";
-import { ColorRepresentation, PointLight, PointLightHelper, PointLightShadow } from "three";
+import { ColorRepresentation, Object3D, PointLight, PointLightHelper, PointLightShadow } from "three";
 import * as dat from "dat.gui"
 
-interface LightProps  {
+interface LightProps {
     name?: string,
     color: RGBColor,
     intensity?: number,
@@ -29,14 +29,15 @@ interface PositionProp {
     z: number
 }
 
-function Lights(props: LightProps) {
-    /* Make it generic */
-    const light = useRef<PointLight>(null!);
-    useHelper(light, PointLightHelper, props.helperSize, props.helperColor);
+function Lights<T extends {}>(props: LightProps) {
+    const {helperSize, helperColor, name} = props;
+    const light = useRef<T>(null!);
+    if(light.current.is)
+    useHelper(light, PointLightHelper, helperSize, helperColor);
 
     useEffect(() => {
         const gui: dat.GUI = new dat.GUI();
-        const lightFolder: dat.GUI = gui.addFolder(`${props.name ? props.name : `Light ${props.helperColor}`}`);
+        const lightFolder: dat.GUI = gui.addFolder(`${name ? name : `Light ${helperColor}`}`);
 
         const debugObject = {
             position: {

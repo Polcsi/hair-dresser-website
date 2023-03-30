@@ -8,6 +8,7 @@ import './style/App.css'
 import ManHairModel from './component/ManHairModel'
 import Hair from './component/Hair'
 import Lights from './component/Lights'
+import { PointLight } from 'three'
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
             backgroundColor: '#111a21'
           }}
         >
-          <Lights
+          <Lights<PointLight>
             helperColor='cyan'
             helperSize={2}
             color={{r: 255, g: 255, b: 255}}
