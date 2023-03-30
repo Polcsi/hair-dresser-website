@@ -2,37 +2,12 @@ import { useHelper } from "@react-three/drei";
 import { useRef, useEffect } from "react";
 import { ColorRepresentation, Object3D, PointLight, PointLightHelper, PointLightShadow } from "three";
 import * as dat from "dat.gui"
+import PointLightClass from "../classes/PointLightClass";
 
-interface LightProps {
-    name?: string,
-    color: RGBColor,
-    intensity?: number,
-    power?: number,
-    position: PositionProp,
-    distance?: number,
-    decay? : number,
-    shadow?: PointLightShadow,
-    castShadow?: boolean,
-    helperColor: ColorRepresentation,
-    helperSize: number,
-}
-
-interface RGBColor {
-    r: number,
-    g: number,
-    b: number
-}
-
-interface PositionProp {
-    x: number,
-    y: number,
-    z: number
-}
-
-function Lights<T extends {}>(props: LightProps) {
+function Lights(props: PointLightClass) {
     const {helperSize, helperColor, name} = props;
-    const light = useRef<T>(null!);
-    if(light.current.is)
+    const light = useRef<PointLight>(null!);
+
     useHelper(light, PointLightHelper, helperSize, helperColor);
 
     useEffect(() => {
@@ -46,19 +21,16 @@ function Lights<T extends {}>(props: LightProps) {
                 z: props.position.z
             },
             intensity: {
-                intensity: props.intensity ? props.intensity : 1
+                intensity: props.intensity
             },
             power: {
-                power: props.power ? props.power : 1000
+                power: props.power
             },
             distance: {
-                distance: props.distance ? props.distance : 0.0
+                distance: props.distance
             },
             decay: {
-                decay: props.decay ? props.decay : 2
-            },
-            shadow: {
-                shadow: props.shadow
+                decay: props.decay 
             },
             castShadow: {
                 castShadow: props.castShadow ? props.castShadow : false
@@ -157,7 +129,6 @@ function Lights<T extends {}>(props: LightProps) {
                 intensity={props.intensity}
                 power={props.power}
                 distance={props.distance}
-                shadow={props.shadow}
                 castShadow={props.castShadow}
                 decay={props.decay}
                 position={[props.position.x, props.position.y, props.position.z]}

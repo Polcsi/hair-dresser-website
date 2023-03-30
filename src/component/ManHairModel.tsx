@@ -5,7 +5,7 @@ import * as THREE from 'three';
 
 function ManHairModel(props: any) {
     const group = useRef();
-    const {nodes, materials } = useGLTF('/hairmodel.glb');
+    const {nodes, materials } = useGLTF('/hairmodel.gltf');
 
     //useFrame((state, delta) => (group.current.rotation.y += 0.01));
 
@@ -15,7 +15,7 @@ function ManHairModel(props: any) {
                 castShadow={true}
                 receiveShadow={false}
                 geometry={nodes.Cube001.geometry}
-                rotation={new THREE.Euler(0, 0, -0.1, 'XYZ')}
+                rotation={new THREE.Euler(0, 0, -0.15, 'XYZ')}
                 position={[0.8, 0, 0]}
             >
                 <meshStandardMaterial/>
@@ -23,6 +23,6 @@ function ManHairModel(props: any) {
         </group>
     )
 }
-useGLTF.preload("/hairmodel.glb")
+useGLTF.preload("/hairmodel.gltf")
 
 export default ManHairModel

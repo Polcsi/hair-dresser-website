@@ -1,9 +1,14 @@
-class BaseLightClass {
-    public color: string;
-    public intensity: number;
-    public name: string;
+import {RGBColor} from "../interfaces/interface";
+import { ColorRepresentation } from "three";
 
-    constructor(name: string, color: string, intensity: number) {
+class BaseLightClass {
+    public color: RGBColor = {r: 0, g: 0, b: 0};
+    public intensity: number = 1;
+    public name?: string = "Light";
+    public helperColor: ColorRepresentation = "red";
+    public helperSize: number = 2;
+
+    constructor(color: RGBColor, intensity: number, name?: string) {
         this.name = name;
         this.color = color;
         this.intensity = intensity;
