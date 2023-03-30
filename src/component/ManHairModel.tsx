@@ -12,13 +12,13 @@ function ManHairModel(props: any) {
     return (
         <group ref={group} {...props} dispose={null}>
             <mesh
-                castShadow
-                receiveShadow
+                castShadow={true}
+                receiveShadow={false}
                 geometry={nodes.Cube001.geometry}
                 rotation={new THREE.Euler(0, 0, -0.1, 'XYZ')}
                 position={[0.8, 0, 0]}
             >
-                <meshStandardMaterial />
+                <meshStandardMaterial/>
             </mesh>
         </group>
     )
